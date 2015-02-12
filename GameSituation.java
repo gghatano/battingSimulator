@@ -33,10 +33,6 @@ class GameSituation{
         }else{
           score += thirdBase;
           thirdBase = secondBase;
-          secondBase = firstBase;
-          firstBase = 1;
-        }
-      } else{
         score += thirdBase;
         thirdBase = secondBase;
         secondBase = firstBase;
