@@ -12,6 +12,10 @@ class Tmp{
       while(bf.ready()){
         String tmp = bf.readLine();
         System.out.println(tmp);
+        String[] rows = tmp.split(",");
+        System.out.println(rows[0]);
+        System.out.println(rows[1]);
+
       }
     } catch(FileNotFoundException ex){
       System.out.println(ex);

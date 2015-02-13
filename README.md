@@ -18,6 +18,8 @@ GameSituationにplayerを与えてattackすると, gameSituationが変化する
 
 選手データ.csvをパースして, 選手データを読み込むスクリプト
 
+readLineしてsplit(,)すればいいはず
+
 
 
 
