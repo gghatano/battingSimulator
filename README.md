@@ -20,6 +20,11 @@ GameSituationにplayerを与えてattackすると, gameSituationが変化する
 
 readLineしてsplit(,)すればいいはず
 
+Player(double average, 
+    double probSingle, double probDouble, double probTriple, double probHomerun,
+    double probSwingOut, double probOtherOut, 
+    String batterName){
+
 
 
 
