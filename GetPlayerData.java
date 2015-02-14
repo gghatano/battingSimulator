@@ -19,13 +19,16 @@ class GetPlayerData{
 
   void readDataFile(){
     try{
-      File file = new File(teamName+".dat");
+      File file = new File("./teamData/"+teamName+".txt");
       BufferedReader bf = new BufferedReader(new FileReader(file));
+      System.out.println("Name,ATBAT,Single,Double,Triple,Homerun,BB,SO,OBP");
       while(bf.ready()){
         String line = bf.readLine();
         String[] playerRawData = line.split(",");
-        System.out.println(playerRawData[1]);
-        System.out.println(playerRawData[2]);
+        for(String elem:playerRawData){
+          System.out.print(elem + ",");
+        }
+        System.out.println("");
       }
     } catch(FileNotFoundException ex){
       System.out.println(ex);
