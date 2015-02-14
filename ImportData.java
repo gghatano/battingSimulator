@@ -15,11 +15,20 @@ public class ImportData {
       String path="jdbc:sqlite:./baseballData.sqlite";
       conn = DriverManager.getConnection(path);
       myStatement = conn.createStatement();
-      sql = "select * from baseballData";
+
+      // execute sql
+      sql = "select * from baseballData where name='坂本勇人'";
       System.out.println(myStatement.execute(sql));
-      ResultSet rs = myStatement.executeQuery("select * from baseballData");
+      ResultSet rs = myStatement.executeQuery(sql);
+
+      // print
       while(rs.next()){
-        System.out.print(rs.getString("name"));
+        System.out.print(rs.getString("name") + ",");
+        
+        int single = rs.getInt("single");
+        int atbat = rs.getInt("atbat");
+        double singleHit = (double)single / (double)atbat;
+        System.out.println(singleHit);
       }
 
     } catch(ClassNotFoundException e){
@@ -32,7 +41,6 @@ public class ImportData {
   }
 
   public static void main(String[] args) {
-    System.out.println("hoge");
     new ImportData();
   }
 }
