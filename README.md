@@ -16,14 +16,10 @@ GameSituationにplayerを与えてattackすると, gameSituationが変化する
 
 ## ToDo
 
-選手データ.csvをパースして, 選手データを読み込むスクリプト
+giantsの選手だけsqliteに入れた
+他の全選手でもやればいい
 
-readLineしてsplit(,)すればいいはず
-
-Player(double average, 
-    double probSingle, double probDouble, double probTriple, double probHomerun,
-    double probSwingOut, double probOtherOut, 
-    String batterName){
+javaからsqliteの読み込み
 
 
 
