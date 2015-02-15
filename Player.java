@@ -4,14 +4,13 @@
 class Player {
   double average; 
   double probSingle, probDouble, probTriple, probHomerun;
-  double probSwingOut, probOtherOut;
+  double probBB, probSwingOut, probOtherOut;
   String batterName;
 
 
-  // 8 parametars
   Player(double average, 
     double probSingle, double probDouble, double probTriple, double probHomerun,
-    double probSwingOut, double probOtherOut, 
+    double probBB, double probSwingOut, double probOtherOut, 
     String batterName){
 
     this.average = average; 
@@ -19,6 +18,8 @@ class Player {
     this.probDouble = probDouble; 
     this.probTriple = probTriple;
     this.probHomerun= probHomerun;
+
+    this.probBB = probBB;
     this.probSwingOut = probSwingOut; 
     this.probOtherOut = probOtherOut; 
     this.batterName = batterName;
@@ -28,15 +29,30 @@ class Player {
   Player(){
     this(0.35, 
         0.20, 0.05, 0.0, 0.1, 
-        0.3, 0.4, "Ichiro");
+        0.1, 0.3, 0.4, "Ichiro");
   }
 
   // Main Method for test
   public static void main(String[] args) {
-    Player player = new Player(0.3, 
-                               0.1, 0.1, 0.1, 0.1,
-                               0.1, 0.1, "Ichiro");
 
-    
+    // import data of batter name
+    ImportData importData = new ImportData("坂本勇人");
+    System.out.println(importData.batterName);
+
+    // construct 
+    Player player = new Player(importData.probSingle,
+        importData.probSingle, importData.probDouble, importData.probTriple, importData.probHomerun, 
+        importData.probBB, importData.probSwingOut, importData.probOtherOut, 
+        importData.batterName);
+    System.out.println(player.probSingle);
+
+
+    // simulation 
+    GameSituation gameSituation1 = new GameSituation(player);
+    while(!(GameSituation.gameEndCheck())){
+      gameSituation1.attack();
+      System.out.println("game single hit : " +  GameSituation.gameSingleNumGetter());
+      System.out.println("game score : " +  GameSituation.scoreGetter());
+    }
   }
 }

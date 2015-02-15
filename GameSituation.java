@@ -9,6 +9,7 @@ class GameSituation{
   private static int score=0, outCount=0;
   private static int inning = 1;
   private static int singleNum=0, doubleNum=0, tripleNum=0, homerunNum=0;
+  private static int gameSingleNum = 0;
 
   public static int outCountGetter(){
     return(outCount);
@@ -19,6 +20,10 @@ class GameSituation{
   public static int scoreGetter(){
     return(score);
   }
+  public static int gameSingleNumGetter(){
+    return(gameSingleNum);
+  }
+  
 
   GameSituation(Player player){
     this.player = player;
@@ -31,7 +36,9 @@ class GameSituation{
 
     // Single hit
     if(battingResultRandomNumber<=player.probSingle){
-      System.out.println("HIT");
+      System.out.println("Single");
+      gameSingleNum += 1; 
+
       // whether second runner come back to home.
       if(secondBase == 1){
         double secondRunnerScoringRandomNumber = Math.random();
@@ -63,6 +70,8 @@ class GameSituation{
       secondBase = 0;
       thirdBase = 0;
 
+    // SwingOut
+    // BB
     // other hitting out
     } else {
       System.out.println("OUT");

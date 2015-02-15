@@ -5,7 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 public class ImportData {
-  public ImportData(){
+  double probSingle, probDouble, probTriple, probHomerun;
+  double probBB, probSwingOut, probOtherOut;
+  String batterName;
+
+  public ImportData(String batterName){
+    this.batterName= batterName;
     Connection conn;
     Statement myStatement;
     String sql;
@@ -17,18 +22,33 @@ public class ImportData {
       myStatement = conn.createStatement();
 
       // execute sql
-      sql = "select * from baseballData where name='坂本勇人'";
-      System.out.println(myStatement.execute(sql));
+      sql = "select * from baseballData where name='" + batterName + "'";
       ResultSet rs = myStatement.executeQuery(sql);
 
       // print
       while(rs.next()){
-        System.out.print(rs.getString("name") + ",");
+
+        // calculate the probabilities
         
-        int single = rs.getInt("single");
+        int singleHit = rs.getInt("single");
+        int doubleHit = rs.getInt("double");
+        int tripleHit = rs.getInt("triple");
+        int homerun = rs.getInt("homerun");
+
+        int swingOut = rs.getInt("swingout");
+        int bb = rs.getInt("bb");
+
         int atbat = rs.getInt("atbat");
-        double singleHit = (double)single / (double)atbat;
-        System.out.println(singleHit);
+
+        probSingle = (double)singleHit / (double) atbat;
+        probDouble = (double)doubleHit / (double) atbat;
+        probTriple = (double)tripleHit / (double) atbat;
+        probHomerun = (double)homerun / (double) atbat;
+
+        probSwingOut = (double)swingOut / (double) atbat;
+        probBB = (double) swingOut / (double) atbat; 
+        probOtherOut = 1 - probSingle - probDouble - probTriple - probHomerun - probSwingOut - probBB;
+
       }
 
     } catch(ClassNotFoundException e){
@@ -40,7 +60,12 @@ public class ImportData {
     }
   }
 
+  // default
+  public ImportData(){
+    this("阿部慎之助");
+  }
+
   public static void main(String[] args) {
-    new ImportData();
+    new ImportData("坂本勇人");
   }
 }
