@@ -2,6 +2,8 @@
 
 dir=$(dirname $0)
 
+$dir/teamData/dataScrape.bash
+
 cat << _EOT_ > /tmp/createTable.txt
 drop table baseballdata;
 CREATE TABLE baseballData(team text, name text,
