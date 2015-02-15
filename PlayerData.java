@@ -4,12 +4,12 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
-public class ImportData {
+public class PlayerData {
   double probSingle, probDouble, probTriple, probHomerun;
   double probBB, probSwingOut, probOtherOut;
   String batterName;
 
-  public ImportData(String batterName){
+  public PlayerData(String batterName){
     this.batterName= batterName;
     Connection conn;
     Statement myStatement;
@@ -61,11 +61,11 @@ public class ImportData {
   }
 
   // default
-  public ImportData(){
+  public PlayerData(){
     this("阿部慎之助");
   }
 
   public static void main(String[] args) {
-    new ImportData("坂本勇人");
+    new PlayerData("坂本勇人");
   }
 }

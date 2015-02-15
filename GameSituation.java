@@ -4,7 +4,7 @@
 // OUTPUT :: 
 
 class GameSituation{
-  Player player;
+  PlayerData player;
   private static int firstBase=0, secondBase=0, thirdBase = 0;
   private static int score=0, outCount=0;
   private static int inning = 1;
@@ -25,7 +25,7 @@ class GameSituation{
   }
   
 
-  GameSituation(Player player){
+  GameSituation(PlayerData player){
     this.player = player;
   }
 
@@ -105,7 +105,8 @@ class GameSituation{
     System.out.println("Compile OK");
 
     // default player
-    Player player1 = new Player();
+    PlayerData player1 = new PlayerData();
+    System.out.println(player1.batterName);
 
     GameSituation gameSituation1 = new GameSituation(player1);
 
