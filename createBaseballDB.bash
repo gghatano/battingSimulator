@@ -8,10 +8,9 @@ CREATE TABLE baseballData(team text, name text,
 atbat int,
 single int, double int, triple int, homerun int, 
 bb int, swingout int);
-.schema
-.import teamData/giants.csv baseballData
-select * from baseballdata;
-
+.import teamData/stats.dat baseballData
+select * from baseballdata 
+  limit 10;
 _EOT_
 
 cat /tmp/createTable.txt | 

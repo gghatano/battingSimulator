@@ -22,7 +22,7 @@ public class PlayerData {
       myStatement = conn.createStatement();
 
       // execute sql
-      sql = "select * from baseballData where name='" + batterName + "'";
+      sql = "select * from baseballData where name='" + batterName + "' limit 1";
       ResultSet rs = myStatement.executeQuery(sql);
 
       // print
