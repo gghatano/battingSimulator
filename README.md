@@ -18,9 +18,3 @@ GameSituationにplayerDataを与えてattackすると, gameSituationが変化す
 
 ## ToDo
 
-* スターター9人でシミュレーション
-
-
-
-
-
