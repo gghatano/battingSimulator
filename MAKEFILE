@@ -1,0 +1,4 @@
+javac ./GameSituation.java
+javac ./PlayerData.java
+javac ./Simulation.java
+java Simulation

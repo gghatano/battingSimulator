@@ -5,7 +5,12 @@ class Simulation{
     System.out.println(playerData.batterName);
 
     GameSituation gameSituation = new GameSituation(playerData);
-    gameSituation.attack();
-    System.out.println(GameSituation.outCountGetter());
+
+    /* simulation until one game ends */
+    while(GameSituation.inningGetter() <= 9){
+      gameSituation.attack();
+      /* System.out.println(GameSituation.outCountGetter()); */
+    }
+    System.out.println("Score:" + GameSituation.scoreGetter());
   }
 }

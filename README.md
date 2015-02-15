@@ -8,18 +8,20 @@ Javaの思い出し::野球のシミュレータを作る
 
 ## 内容
 
-* Player.java 選手成績を扱う
+* Simulation.java シミューレーションを行う
+
+* PlayerData.java 選手成績をsqliteから呼ぶ
 
 * GameSituation.java 試合状況と攻撃の内容
 
-GameSituationにplayerを与えてattackすると, gameSituationが変化する
+GameSituationにplayerDataを与えてattackすると, gameSituationが変化する
 
 ## ToDo
 
-giantsの選手だけsqliteに入れた
-他の全選手でもやればいい
+* 巨人意外の他の全選手の成績をsqlに
 
-javaからsqliteの読み込み
+* スターター9人でシミュレーション
+
 
 
 

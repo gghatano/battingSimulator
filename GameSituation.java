@@ -53,14 +53,28 @@ class GameSituation{
           secondBase = firstBase;
           firstBase = 1; 
         }
+      } else{
+        score += thirdBase; 
+        thirdBase = secondBase; 
+        secondBase = firstBase;
+        firstBase = 1;
       }
+
     // Double
     }else if(battingResultRandomNumber <= player.probSingle + player.probDouble){
       System.out.println("Double");
+      score += secondBase + thirdBase;
+      thirdBase = firstBase; 
+      secondBase = 1;
+      firstBase = 0;
 
     // Triple
     }else if(battingResultRandomNumber <= player.probSingle + player.probDouble + player.probTriple){
       System.out.println("Triple");
+      score += firstBase + secondBase + thirdBase;
+      thirdBase = 1;
+      secondBase = 0;
+      firstBase = 0;
 
     // Homerun
     }else if(battingResultRandomNumber <= player.probSingle + player.probDouble + player.probTriple + player.probHomerun){
@@ -70,8 +84,23 @@ class GameSituation{
       secondBase = 0;
       thirdBase = 0;
 
-    // SwingOut
     // BB
+    }else if(battingResultRandomNumber <= player.probSingle + player.probDouble + player.probTriple + player.probHomerun + 
+        player.probBB){
+      System.out.println("BB");
+      score += thirdBase;
+      thirdBase = secondBase;
+      secondBase = firstBase;
+      firstBase = 1;
+
+    // SwingOut
+    }else if(battingResultRandomNumber <= 
+        player.probSingle + player.probDouble + player.probTriple + player.probHomerun + 
+        player.probBB + player.probSwingOut){
+      System.out.println("KO");
+      outCount += 1;
+      outCountCheck();
+
     // other hitting out
     } else {
       System.out.println("OUT");
@@ -107,14 +136,17 @@ class GameSituation{
     // default player
     PlayerData player1 = new PlayerData();
     System.out.println(player1.batterName);
+    System.out.println(player1.probHomerun);
+
 
     GameSituation gameSituation1 = new GameSituation(player1);
 
     // Simulation by using default player data
-    while(!(GameSituation.gameEndCheck())){
+    while(GameSituation.inningGetter() < 10){
       gameSituation1.attack();
       System.out.println("inning : " + GameSituation.inningGetter());
       System.out.println("score  : " + GameSituation.scoreGetter());
+      System.out.println("1:" + GameSituation.firstBase + ", 2: " + GameSituation.secondBase + ", 3: " + GameSituation.thirdBase);
       System.out.println("out    : " + GameSituation.outCountGetter());
     }
   }
